@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        function runNumberSuite() {
+            let val = document.getElementById("inputVal").value;
+            let num = Number(val);
+            let res = `
+                Is Nan: ${Number.isNaN(num)}
+                Is Integer: ${Number.isInteger(num)}
+                Fixed to 2 Decimals: ${!Number.isNaN(num) ? num.toFixed(2) : "N/A"}
+            `;
+            document.getElementById("suiteOutput").innerText = res;
+        }
+    </script>
+</head>
+<body>
+    <h2>Number Object Inspector</h2>
+    <input type="text" id="inputVal" value="123.456">
+    <button onclick="runNumberSuite()">Analyze Number</button>
+    <pre id="suiteOutput"></pre>
+</body>
+</html>
