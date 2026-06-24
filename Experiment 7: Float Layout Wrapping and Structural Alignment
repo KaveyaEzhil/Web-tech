@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        .column {
+            float: left;
+            width: 45%;
+            margin: 2.5%;
+            background-color: #e2e8f0;
+            padding: 10px;
+        }
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+    </style>
+</head>
+<body>
+    <div class="clearfix">
+        <div class="column"><h3>Left Panel Column</h3></div>
+        <div class="column"><h3>Right Panel Column</h3></div>
+    </div>
+</body>
+</html>
