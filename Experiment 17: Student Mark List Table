@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Student Mark List</title>
+</head>
+<body>
+    <h2>Student Academic Performance Mark Sheet</h2>
+    <table border="1" cellpadding="8" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Roll No</th>
+                <th>Student Name</th>
+                <th>Web Tech Marks</th>
+                <th>Database Marks</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>101</td>
+                <td>Alice Vance</td>
+                <td>92</td>
+                <td>88</td>
+            </tr>
+            <tr>
+                <td>102</td>
+                <td>Bob Miller</td>
+                <td>78</td>
+                <td>85</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
