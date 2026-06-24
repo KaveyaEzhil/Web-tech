@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Frameset Web Layout</title>
+</head>
+<frameset cols="25%,75%">
+    <frame src="menu.html" name="leftFrame">
+    <frame src="main.html" name="rightFrame">
+    <noframes>
+        <body>Frames are not supported by your browser.</body>
+    </noframes>
+</frameset>
+</html>
