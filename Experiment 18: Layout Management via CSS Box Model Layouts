@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        .box-model-demo {
+            width: 300px;
+            padding: 20px;
+            border: 5px solid #333;
+            margin: 30px;
+            background-color: lightyellow;
+        }
+    </style>
+</head>
+<body>
+    <div class="box-model-demo">
+        This box demonstrates standard CSS Box Model properties: Margin, Border, Padding, and Content Area.
+    </div>
+</body>
+</html>
