@@ -1,0 +1,31 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" import="java.sql.*" %>
+<!DOCTYPE html>
+<html>
+<body>
+    <h2>Employee Directory Core Engine</h2>
+    <%
+        String name = request.getParameter("empName");
+        String salary = request.getParameter("salary");
+        
+        if(name != null && salary != null) {
+            try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                Connection cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Corporate", "root", "password");
+                PreparedStatement p = cn.prepareStatement("INSERT INTO staff (name, salary) VALUES (?, ?)");
+                p.setString(1, name);
+                p.setDouble(2, Double.parseDouble(salary));
+                p.executeUpdate();
+                out.println("<p style='color:green;'>Staff Member successfully logged into persistence matrix.</p>");
+                cn.close();
+            } catch(Exception e) {
+                out.println("<p>Error processing database operation: " + e.getMessage() + "</p>");
+            }
+        }
+    %>
+    <form method="POST">
+        Name: <input type="text" name="empName"><br>
+        Salary: <input type="text" name="salary"><br>
+        <input type="submit" value="Persist Profile Record">
+    </form>
+</body>
+</html>
