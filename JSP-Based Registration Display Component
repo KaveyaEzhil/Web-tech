@@ -1,0 +1,18 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head><title>Registry Verification Window</title></head>
+<body>
+    <h3>Registered Profile Summary Details</h3>
+    <table border="1" cellpadding="5">
+        <tr>
+            <td>Profile Subject Name</td>
+            <td><%= request.getParameter("regName") != null ? request.getParameter("regName") : "N/A" %></td>
+        </tr>
+        <tr>
+            <td>Target Subsystem Mapping Route</td>
+            <td><%= request.getParameter("systemTrack") != null ? request.getParameter("systemTrack") : "N/A" %></td>
+        </tr>
+    </table>
+</body>
+</html>
