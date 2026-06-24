@@ -1,0 +1,45 @@
+/* Database Schema Design script initialization step */
+CREATE DATABASE IF NOT EXISTS Academics;
+USE Academics;
+CREATE TABLE IF NOT EXISTS students (
+    rollNo VARCHAR(20) PRIMARY KEY,
+    studentName VARCHAR(100)
+);
+
+package com.lab;
+import java.io.*;
+import java.sql.*;
+import javax.servlet.*;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.*;
+
+@WebServlet("/DbManager")
+public class StudentDbManagerServlet extends HttpServlet {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+            throws ServletException, IOException {
+        response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
+        
+        String rNo = request.getParameter("rollNo");
+        String sName = request.getParameter("studentName");
+        
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            try (Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/Academics", "root", "password")) {
+                PreparedStatement check = c.prepareStatement("SELECT * FROM students WHERE rollNo=?");
+                check.setString(1, rNo);
+                if(check.executeQuery().next()) {
+                    out.println("<h3>Error: Identity Record key exists inside system database index tables.</h3>");
+                } else {
+                    PreparedStatement ins = c.prepareStatement("INSERT INTO students VALUES(?,?)");
+                    ins.setString(1, rNo);
+                    ins.setString(2, sName);
+                    ins.executeUpdate();
+                    out.println("<h3>Student Identity records updated successfully within system storage architecture matrix.</h3>");
+                }
+            }
+        } catch (Exception err) {
+            out.println("Infrastructure failure detected: " + err.getMessage());
+        }
+    }
+}
