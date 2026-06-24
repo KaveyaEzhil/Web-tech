@@ -1,0 +1,34 @@
+package com.lab;
+import java.io.*;
+import java.sql.*;
+import javax.servlet.*;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.*;
+
+@WebServlet("/DbStudentRegister")
+public class DbStudentRegisterServlet extends HttpServlet {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+            throws ServletException, IOException {
+        response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
+        
+        String roll = request.getParameter("rollNo");
+        String name = request.getParameter("studentName");
+        
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Academics", "root", "password");
+            PreparedStatement ps = conn.prepareStatement("INSERT INTO students VALUES(?, ?)");
+            ps.setString(1, roll);
+            ps.setString(2, name);
+            
+            int status = ps.executeUpdate();
+            if(status > 0) {
+                out.println("<h3>Record saved successfully to relational infrastructure matrix!</h3>");
+            }
+            conn.close();
+        } catch(Exception e) {
+            out.println("Data operational fault: " + e.getMessage());
+        }
+    }
+}
