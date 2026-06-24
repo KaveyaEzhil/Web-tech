@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        function runStringPipeline() {
+            let sampleStr = document.getElementById("strInput").value;
+            let diagnosticReport = `
+                Total Character Units: ${sampleStr.length}
+                Uppercase Transform: ${sampleStr.toUpperCase()}
+                Extracted Slice (0-4): ${sampleStr.substring(0, 4)}
+            `;
+            document.getElementById("stringReport").innerText = diagnosticReport;
+        }
+    </script>
+</head>
+<body>
+    <h2>Text Modification Engine Pipeline</h2>
+    <input type="text" id="strInput" value="WebArchitecture">
+    <button onclick="runStringPipeline()">Execute Processing Suite</button>
+    <pre id="stringReport"></pre>
+</body>
+</html>
