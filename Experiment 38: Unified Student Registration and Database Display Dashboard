@@ -1,0 +1,35 @@
+package com.lab;
+import java.io.*;
+import java.sql.*;
+import javax.servlet.*;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.*;
+
+@WebServlet("/RegisterAndDisplay")
+public class RegisterAndDisplayServlet extends HttpServlet {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+            throws ServletException, IOException {
+        response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
+        String name = request.getParameter("studName");
+        
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Academics", "root", "password");
+            
+            PreparedStatement ps = conn.prepareStatement("INSERT INTO students(name) VALUES(?)");
+            ps.setString(1, name);
+            ps.executeUpdate();
+            
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery("SELECT * FROM students");
+            
+            out.println("<h2>Active Enrolled Roster Matrix</h2><table border='1'>");
+            while(rs.next()) {
+                out.println("<tr><td>" + rs.getInt("id") + "</td><td>" + rs.getString("name") + "</td></tr>");
+            }
+            out.println("</table>");
+            conn.close();
+        } catch (Exception e) { out.println("Processing Failure: " + e.getMessage()); }
+    }
+}
