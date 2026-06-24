@@ -1,0 +1,23 @@
+package com.lab;
+import java.io.*;
+import javax.servlet.*;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.*;
+
+@WebServlet("/StudentRegister")
+public class StudentRegisterServlet extends HttpServlet {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+            throws ServletException, IOException {
+        response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
+        
+        String name = request.getParameter("studName");
+        String course = request.getParameter("courseName");
+        
+        out.println("<html><body>");
+        out.println("<h2>Servlet Student Registration Completed Successfully</h2>");
+        out.println("<p>Enrolled Student Name: " + name + "</p>");
+        out.println("<p>Selected Academic Track: " + course + "</p>");
+        out.println("</body></html>");
+    }
+}
