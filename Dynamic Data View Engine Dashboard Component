@@ -1,0 +1,18 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" import="java.util.ArrayList" %>
+<!DOCTYPE html>
+<html>
+<body>
+    <h3>Active Environmental Storage Manifest Log</h3>
+    <%
+        ArrayList<String> notifications = new ArrayList<>();
+        notifications.add("System Core Online at Timestamp Node.");
+        notifications.add("Relational Structural Database linked successfully.");
+        notifications.add("System operations running normal.");
+    %>
+    <ul>
+    <% for(String log : notifications) { %>
+        <li><%= log %></li>
+    <% } %>
+    </ul>
+</body>
+</html>
