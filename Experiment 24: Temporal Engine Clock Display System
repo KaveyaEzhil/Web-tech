@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        function fetchSystemTime() {
+            let temporalInstance = new Date();
+            document.getElementById("clockDisplay").innerText = 
+                "System Timestamp: " + temporalInstance.toLocaleString();
+        }
+    </script>
+</head>
+<body onload="fetchSystemTime()">
+    <h2>Live Environmental Processing Clock Engine</h2>
+    <div id="clockDisplay"></div>
+    <button onclick="fetchSystemTime()">Update Real-time Clock</button>
+</body>
+</html>
