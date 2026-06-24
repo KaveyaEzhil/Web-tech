@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Employee Registration</title>
+</head>
+<body>
+    <h2>Employee Registration Form</h2>
+    <form action="#" method="POST">
+        <label>Employee Name:</label><br>
+        <input type="text" name="empName" required><br><br>
+
+        <label>Email ID:</label><br>
+        <input type="email" name="empEmail" required><br><br>
+
+        <label>Gender:</label><br>
+        <input type="radio" name="gender" value="Male"> Male
+        <input type="radio" name="gender" value="Female"> Female<br><br>
+
+        <label>Designation:</label><br>
+        <select name="designation">
+            <option value="developer">Software Engineer</option>
+            <option value="analyst">Data Analyst</option>
+            <option value="manager">Project Manager</option>
+        </select><br><br>
+
+        <input type="submit" value="Register Employee">
+        <input type="reset" value="Clear">
+    </form>
+</body>
+</html>
