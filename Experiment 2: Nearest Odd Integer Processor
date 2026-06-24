@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Nearest Odd Number Calculator</title>
+    <script>
+        function computeNearestOdd() {
+            let num = parseFloat(document.getElementById("numInput").value);
+            let integerPart = Math.round(num);
+            let result = (integerPart % 2 !== 0) ? integerPart : integerPart + 1;
+            document.getElementById("output").innerText = "Nearest Odd Number: " + result;
+        }
+    </script>
+</head>
+<body>
+    <h2>Nearest Odd Number Evaluator</h2>
+    <input type="number" id="numInput" placeholder="Enter number...">
+    <button onclick="computeNearestOdd()">Calculate</button>
+    <p id="output"></p>
+</body>
+</html>
