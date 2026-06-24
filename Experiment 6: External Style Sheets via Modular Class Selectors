@@ -8,3 +8,16 @@
     color: #2c3e50;
     font-weight: bold;
 }
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="profile-card">
+        <p class="highlight-text">External CSS Class Styling applied successfully.</p>
+    </div>
+</body>
+</html>
