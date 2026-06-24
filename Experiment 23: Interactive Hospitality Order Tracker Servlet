@@ -1,0 +1,29 @@
+package com.lab;
+import java.io.*;
+import javax.servlet.*;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.*;
+
+@WebServlet("/ConfirmOrder")
+public class DishConfirmationServlet extends HttpServlet {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+            throws ServletException, IOException {
+        response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
+        
+        String[] dishes = request.getParameterValues("selectedDishes");
+        
+        out.println("<html><body>");
+        out.println("<h2>Kitchen Order Token Manifest</h2>");
+        if (dishes != null) {
+            out.println("<ul>");
+            for(String dish : dishes) {
+                out.println("<li>" + dish + "</li>");
+            }
+            out.println("</ul>");
+        } else {
+            out.println("<p>No menu entries chosen.</p>");
+        }
+        out.println("</body></html>");
+    }
+}
