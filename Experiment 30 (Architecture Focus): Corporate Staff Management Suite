@@ -1,0 +1,40 @@
+/* Corporate Directory Storage Initialization Script */
+CREATE DATABASE IF NOT EXISTS Corporate;
+USE Corporate;
+CREATE TABLE IF NOT EXISTS staff (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100),
+    salary DOUBLE
+);
+
+<%@ page language="java" contentType="text/html; charset=UTF-8" import="java.sql.*" %>
+<!DOCTYPE html>
+<html>
+<head><title>Enterprise Corporate Registry Suite</title></head>
+<body>
+    <h2>Corporate Management Persistence Workspace</h2>
+    <%
+        String actionType = request.getParameter("action");
+        if("insert".equalsIgnoreCase(actionType)) {
+            try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                Connection baseLink = DriverManager.getConnection("jdbc:mysql://localhost:3306/Corporate", "root", "password");
+                PreparedStatement stmt = baseLink.prepareStatement("INSERT INTO staff(name, salary) VALUES(?,?)");
+                stmt.setString(1, request.getParameter("sName"));
+                stmt.setDouble(2, Double.parseDouble(request.getParameter("sSalary")));
+                stmt.executeUpdate();
+                baseLink.close();
+                out.println("<p style='color:green;'>Staff Member successfully logged into persistence matrix.</p>");
+            } catch(Exception ex) {
+                out.println("<p style='color:red;'>System exception: " + ex.getMessage() + "</p>");
+            }
+        }
+    %>
+    <form method="POST">
+        <input type="hidden" name="action" value="insert">
+        Staff Member Name: <input type="text" name="sName" required><br><br>
+        Current Salary Index: <input type="number" step="0.01" name="sSalary" required><br><br>
+        <button type="submit">Commit Record to Cluster</button>
+    </form>
+</body>
+</html>
