@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        function validateEmail() {
+            let email = document.getElementById("emailField").value;
+            let pattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (pattern.test(email)) {
+                alert("Validation Succeeded: Email format is correct.");
+                return true;
+            } else {
+                alert("Validation Failed: Please correct email input configuration.");
+                return false;
+            }
+        }
+    </script>
+</head>
+<body>
+    <h2>Secure Gateway Mail Checker</h2>
+    <input type="text" id="emailField" placeholder="user@domain.com">
+    <button onclick="validateEmail()">Test Email Format</button>
+</body>
+</html>
